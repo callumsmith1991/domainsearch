@@ -3,19 +3,31 @@
 <html>
 
 <head>
-    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/master.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 </head>
 
 <body>
 
-    <form class="js-search-form">
-        <input type="text" name="search" class="searchTerm">
-        <input type="submit" value="search">
-    </form>
+    <section class="form-section">
+        <div class="form-section__container">
+            <h1 class="form-section__heading">Example Domain Search UI</h1>
+            <form class="js-search-form form-section__form">
+                <div class="flex">
+                    <div class="flex-column three-quarters">
+                        <input type="text" name="search" class="searchTerm form-section__input"
+                            placeholder="Enter search here...">
+                    </div>
+                    <div class="flex-column one-quarter">
+                        <input type="submit" value="Search" class="form-section__btn">
+                    </div>
+                </div>
+            </form>
+            <div class="form-section__results js-results"></div>
+        </div>
+    </section>
 
-    <div class="results">
 
-    </div>
 
 
     <script>
@@ -24,20 +36,35 @@
 
 
             var dataArr = data.LOOKUP_ARRAY;
-            var results = document.querySelector('.results');
+            var results = document.querySelector('.js-results');
 
             if (dataArr.length > 0 && results) {
 
-                results.innerHTML = '';
-                results.innerHTML +=  '<ul>';
+                if (!results.classList.contains('active')) {
 
-                for (var i = 0; i < dataArr.length; i++) {
-
-                    results.innerHTML += '<li>'+dataArr[i].DOMAIN+'</li>';
+                    results.classList.add('active');
 
                 }
 
-                results.innerHTML += '</ul>';
+                results.innerHTML = '';
+                results.innerHTML += '<div class="form-section__list"></div>';
+
+                var formSectionList = document.querySelector('.form-section__list');
+
+
+                if (formSectionList) {
+
+                    setTimeout(function () {
+                        formSectionList.classList.add('active');
+                    }, 250);
+
+                    for (var i = 0; i < dataArr.length; i++) {
+
+                        formSectionList.innerHTML += '<div class="form-section__list-result"><div class="form-section__list-result-name">' + dataArr[i].DOMAIN + ' </div><div class="form-section__list-result-price">&pound' + dataArr[i].PRICE_PER_YEAR.toFixed(2) + ' per year</div></div>';
+
+                    }
+
+                }
 
             }
 
@@ -48,6 +75,7 @@
     <div class="jsonp"></div>
 
 
+    <script src="js/app.js"></script>
 
 </body>
 

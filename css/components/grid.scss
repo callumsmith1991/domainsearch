@@ -1,0 +1,31 @@
+.flex {
+    display: flex;
+    flex-direction: row;
+
+    .flex-column {
+
+        &.three-quarters {
+            flex-basis: 75%;
+        }
+
+        &.one-quarter {
+            flex-basis: 25%;
+        }
+
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    .flex {
+        flex-direction: column;
+
+        .flex-column {
+            &.three-quarters, &.one-quarter {
+                flex-basis: 100%;
+            }
+        }
+    }
+
+}

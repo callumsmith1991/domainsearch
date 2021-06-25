@@ -1,0 +1,96 @@
+.form-section {
+    background-color: lightblue;
+    height: 100%;
+    position: relative;
+    &__container {
+        max-width: 700px;
+        margin: 0 auto;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        width: 100%;
+        transform: translateY(-40%);
+        transform: translateX(-50%);
+        box-sizing: border-box;
+    }
+
+    &__heading {
+        text-align: center;
+    }
+
+    &__input,
+    &__btn {
+        width: 100%;
+        border: none;
+        box-sizing: border-box;
+    }
+
+    &__input {
+        padding: 20px 15px;
+    }
+
+    &__btn {
+        padding: 20px 15px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 500ms ease-in-out;
+        &:hover {
+            background-color: black;
+        }
+    }
+
+    &__results {
+        background-color: white;
+        // padding: 20px;
+        margin-top: 20px;
+        max-height: 0px;
+        transition: max-height 500ms ease-in-out;
+        &.active {
+            max-height: 2000px;
+        }
+    }
+
+    &__list {
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 250ms ease-in-out;
+        &.active {
+            opacity: 1;
+        }
+        &-result {
+           
+        }
+        &-result-name {
+            background: #ebf5f8;
+            display: inline-block;
+            padding: 20px;
+            max-width: 200px;
+            color: #33b4de;
+            /* margin-right: 20px; */
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        &-result-price {
+            float: right;
+            background: #ebf5f8;
+            display: inline-block;
+            padding: 20px;
+            max-width: 200px;
+            color: red;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .form-section {
+        &__container {
+            padding-left: 4.33333%;
+            padding-right: 4.333333%;
+            top: 20%;
+        }
+    }
+}

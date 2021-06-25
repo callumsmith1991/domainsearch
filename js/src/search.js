@@ -4,6 +4,7 @@ class search {
 
     constructor(form) {
 
+        this.apiUrl = 'https://shop.easyspace.com/s2/api/fast.cfm';
         this.apiKey = 'HJDUE83832JHDUDH78HDU2882hd8d92jsdhUI880';
         this.searchForm = form;
         this.init();
@@ -14,8 +15,7 @@ class search {
 
         let script = document.createElement('script');
         script.type = 'text/javascript';
-        script.src = 'https://shop.easyspace.com/s2/api/fast.cfm?search=' + searchTerm + '&mock=multiple&key=' + this.apiKey + '&callback=callback';
-        console.log(script);
+        script.src =  this.apiUrl+'?search=' + searchTerm + '&mock=multiple&key=' + this.apiKey + '&callback=callback';
 
         let jsonpdiv = document.querySelector('.jsonp');
 

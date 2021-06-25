@@ -11,7 +11,7 @@ const mode = require('gulp-mode')();
 
 
 gulp.task('process-sass', () => {
-    return gulp.src('src/scss/index.scss')
+    return gulp.src('css/master.scss')
         .pipe(mode.development(sourcemaps.init()))
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
@@ -19,7 +19,7 @@ gulp.task('process-sass', () => {
         }))
         .pipe(cssnano())
         .pipe(mode.development(sourcemaps.write()))
-        .pipe(gulp.dest('dist/css'));
+        .pipe(gulp.dest('css'));
 });
 
 
@@ -46,7 +46,7 @@ gulp.task('process-js', () => {
 gulp.task('watch', () => {
 
     gulp.watch(
-        ['src/scss/*.scss','src/scss/*/*.scss'],
+        ['css/*.scss','css/*/*.scss'],
         { ignoreInitial: false },
         gulp.series('process-sass')
     );
